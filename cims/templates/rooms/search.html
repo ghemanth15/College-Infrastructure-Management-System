@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% load static %}
+
+{% block title %} | Search Results {% endblock %}
+
+{% block content %}
+
+<section id="showcase-inner" class="showcase-search text-white py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <form action=" {% url 'search' %} ">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label class="sr-only">College Code</label>
+                <input type="text" name="clg_code" class="form-control" placeholder="College Code (ex:1608)" 
+                value="{{ values.clg_code }}">
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label class="sr-only"></label>
+                  <select name="block_no" class="form-control">
+                    <option selected="true" disabled="disabled">Block </option>
+                    {% for key,value in block_no_choices.items %}
+                      <option value="{{ key }}"
+                      {% if key == values.block_no %}
+                        selected
+                      {% endif %}
+                      > {{value}} </option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+              
+            <!-- Form Row 2 -->
+            <div class="col-md-6 mb-3">
+              <label class="sr-only">Asset Type </label>
+              <select name="asset_type" class="form-control">
+                <option selected="true" disabled="disabled">Asset Type(All)</option>
+                {% for key,value in asset_type_choices.items %}
+                  <option value="{{ key }}"
+                  {% if key == values.asset_type %}
+                    selected
+                  {% endif %}
+                  > {{value}} </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-5 mb-4">
+            <label class="sr-only">Asset Number </label>
+            <input type="text" name="asset_no" class="form-control" placeholder="Asset Number (ex:002)" 
+            value="{{ values.asset_no }}">
+          </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'rooms' %}">Browse Assets</a>
+          </li>
+          <li class="breadcrumb-item active"> Search Results</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Listings -->
+  <section id="listings" class="py-4">
+    <div class="container">
+      <div class="row">
+        <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Asset ID</th>
+                  <th>College Code</th>
+                  <th>Block</th>
+                  <th>Room</th>
+                  <th>Asset</th>
+                  <th>Date of Purchase</th>
+                  <th>View</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% if rooms %}
+              {% for room in rooms %}
+                <tr>
+                  <td>{{ room.unique_id }}</td>
+                  <td>{{ room.clg_code }}</td>
+                  <td>{{ room.block_no }}</td>
+                  <td>{{ room.room_no }}</td>
+                  <td>{{ room.asset_type }}</td>
+                  <td>{{ room.date_of_purchase }}</td>
+                  <td><a href="{% url 'room' %}" class="btn btn-primary btn-block">More Info</a></td>
+                </tr> 
+              {% endfor %} 
+            {% else %}
+              <div class="col-md-12">
+                <p>No Assets Available</p>
+              </div>
+            {% endif %} 
+          </tbody>
+      </table>
+        
+        
+      </div>
+    </div>
+  </section>
+{% endblock content %}

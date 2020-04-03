@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} | About US {% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-3">About College Infrastructure Management System</h1>
+          <p class="lead"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Management of 'assets' made simpler</h2>
+          <p class="lead">Keeping track of every part of infrastructure has become so difficult to manage manually, so the project aims at providing an online application to keep track of the infrastructure and maintain them, doing so, it reduces the malfunctioning and misplacement of infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">We Work For You</h2>
+    <hr>
+    <a href="{% url 'rooms' %}" class="btn btn-secondary text-white btn-lg">View All Assets</a>
+  </section>{% endblock %}
