@@ -1,6 +1,8 @@
 # College Infrastructure Management System
 This is an infrastructure Management site localized to a college. This project is developed using Django-(python based webframework) and i have used pgsql as the backend database querying language. Also, the project uses jinja template.
 
+![Architecture](https://github.com/ghemanth15/College-Infrastructure-Management-System/blob/master/cims/Screenshot%20(21).png)
+
 ### For downloading django
 ```sh
 pip install django
