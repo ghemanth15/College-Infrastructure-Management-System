@@ -12,7 +12,7 @@ Creating virtual environment is not mandatory, but if you prefer a virtual envir
 ```sh
 python -m venv venv
 ```
-I've also downloaded pgAdmin v4 for viewing te database.
+I've also downloaded pgAdmin v4 for viewing the database.
 ### The project can be run by using the following command 
 ```sh
 python manage.py runserver
@@ -44,4 +44,4 @@ Other operations and functionalities can be viewed by ``` python manage.py help 
 | localhost:8000/accounts/register | To register | 
 | localhost:8000/accounts/login | To login |
 | localhost:8000/accounts/dashboard | To view the dashboard of logged-in users |
-| localhost:8000/listings/search | To search for assets |
+| localhost:8000/accounts/search | To search for assets |
